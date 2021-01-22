@@ -15,7 +15,8 @@ class BarangController extends Controller
     public function index()
     {
         $barang = Barang::all();
-        return view('barang/barang-index', compact('barang'));
+        $i = 1;
+        return view('barang/barang-index', compact('barang','i'));
 
         //
     }
@@ -53,7 +54,7 @@ class BarangController extends Controller
      */
     public function show($id)
     {
-        $barangShow = Barang::find($id);
+        $barangShow = Barang::where('id', $id)->get();
         return view('barang/show-barang', compact('barangShow'));
         //
     }
